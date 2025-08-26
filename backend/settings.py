@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +23,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-ps1s5fj$+%n)@j7*%l&w1z-u9&x$9*y9i2(o*)bf@!j&4on*)w"
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# BEWARE: SECURITY WARNING: don't run with debug turned on in production!
+# TIP: Set DJANGO_DEBUG=False in your production environment before starting the backend server
+DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = [
+        "localhost",
+        "127.0.0.1",
+    ]
+
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+else:
+    ALLOWED_HOSTS = [
+        "your-production-domain.com",
+    ]
+
+    CORS_ALLOWED_ORIGINS = [
+        "https://your-production-frontend.com",
+    ]
 
 
 # Application definition
@@ -37,6 +56,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # ---
+    "corsheaders",  # CORS
     "rest_framework",  # Rest Framework
     "todo",  # Our app
 ]
@@ -49,6 +70,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # ---
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
