@@ -1,0 +1,2 @@
+# GET initial todos
+GET http://localhost:8000/api/todo/
