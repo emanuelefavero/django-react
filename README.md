@@ -56,6 +56,10 @@ Now you should have both the Django backend and the React frontend running. You 
 
 - GET /api/todo/ - Retrieve a list of todos
 
+## Migrations
+
+Make sure to run `python manage.py makemigrations` and `python manage.py migrate` to apply database migrations after making changes to the models.
+
 ## Resources
 
 - [Django Documentation](https://www.djangoproject.com/)
