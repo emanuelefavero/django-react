@@ -62,3 +62,13 @@ Now you should have both the Django backend and the React frontend running. You 
 - [Django REST Framework](https://www.django-rest-framework.org/)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Documentation](https://reactjs.org/docs/getting-started.html)
+
+## License
+
+- [MIT](LICENSE.md)
+
+&nbsp;
+
+&nbsp;
+
+[**Go To Top &nbsp; ⬆️**](#django-react)
