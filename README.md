@@ -9,45 +9,34 @@ To get started with this project, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/django-react.git
+   git clone https://github.com/emanuelefavero/django-react.git
    cd django-react
    ```
 
 2. Set up a virtual environment:
 
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   make virtualenv
    ```
+
+   > Tip: @see `Makefile` for all available commands
 
 3. Install the required packages:
 
    ```bash
-   pip install -r requirements.txt
+   make install
    ```
 
 4. Run the Django development server:
 
    ```bash
-   python manage.py runserver
+   make runserver
    ```
 
-5. Open a new terminal and navigate to the `frontend` directory:
+5. Start the React development server:
 
    ```bash
-   cd frontend
-   ```
-
-6. Install the frontend dependencies:
-
-   ```bash
-   npm install
-   ```
-
-7. Start the React development server:
-
-   ```bash
-   npm run dev
+   make runclient
    ```
 
 Now you should have both the Django backend and the React frontend running. You can access the API at `http://localhost:8000/api/todo/` and the React app at `http://localhost:3000/`.
@@ -55,6 +44,8 @@ Now you should have both the Django backend and the React frontend running. You 
 ## API Endpoints
 
 - GET /api/todo/ - Retrieve a list of todos
+
+> Note: More API endpoints will be added in future updates
 
 ## Migrations
 
