@@ -6,6 +6,10 @@ runserver:
 runclient:
 	cd frontend && npm run dev
 
+# Run both Django and React servers
+run:
+	$(MAKE) -j 2 runserver runclient
+
 # Create a virtual environment
 virtualenv:
 	python -m venv venv

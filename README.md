@@ -41,19 +41,15 @@ To get started with this project, follow these steps:
   NEXT_PUBLIC_CLIENT_URL=http://localhost:3000 # Set to your React client URL
   ```
 
-- Run the Django development server:
+- Run the Django and React development servers:
 
   ```bash
-  make runserver
-  ```
-
-- Start the React development server:
-
-  ```bash
-  make runclient
+  make run
   ```
 
 Now you should have both the Django backend and the React frontend running. You can access the API at `http://localhost:8000/api/todo/` and the React app at `http://localhost:3000/`.
+
+> Tip: You can also run the backend and frontend separately using `make runserver` and `make runclient` (after opening a new terminal window for the client).
 
 ## API Endpoints
 
