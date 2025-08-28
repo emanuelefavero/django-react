@@ -6,38 +6,52 @@ This repository shows how to set up a Django backend with a React frontend. It i
 
 To get started with this project, follow these steps:
 
-1. Clone the repository:
+- Clone the repository:
 
-   ```bash
-   git clone https://github.com/emanuelefavero/django-react.git
-   cd django-react
-   ```
+  ```bash
+  git clone https://github.com/emanuelefavero/django-react.git
+  cd django-react
+  ```
 
-2. Set up a virtual environment:
+- Set up a virtual environment:
 
-   ```bash
-   make virtualenv
-   ```
+  ```bash
+  make virtualenv
+  ```
 
-   > Tip: @see `Makefile` for all available commands
+  > Tip: @see `Makefile` for all available commands
 
-3. Install the required packages:
+- Install the required packages:
 
-   ```bash
-   make install
-   ```
+  ```bash
+  make install
+  ```
 
-4. Run the Django development server:
+- Add Django `.env` variables in the root `.env` file:
 
-   ```bash
-   make runserver
-   ```
+  ```bash
+  SECRET_KEY= # Run `utils/generate_secret_key.py` to generate a new key
+  DEBUG= # Set to False in production, True for development
+  ```
 
-5. Start the React development server:
+- Add React `.env` variables in the `frontend/.env` file:
 
-   ```bash
-   make runclient
-   ```
+  ```bash
+  NEXT_PUBLIC_SERVER_URL=http://localhost:8000 # Set to your Django server URL
+  NEXT_PUBLIC_CLIENT_URL=http://localhost:3000 # Set to your React client URL
+  ```
+
+- Run the Django development server:
+
+  ```bash
+  make runserver
+  ```
+
+- Start the React development server:
+
+  ```bash
+  make runclient
+  ```
 
 Now you should have both the Django backend and the React frontend running. You can access the API at `http://localhost:8000/api/todo/` and the React app at `http://localhost:3000/`.
 
