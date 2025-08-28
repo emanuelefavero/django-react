@@ -21,7 +21,7 @@ export default async function Home() {
           {todos.map((todo: Todo) => (
             <li key={todo.id}>
               <div>
-                {todo.id} - <span className='font-semibold'>{todo.title}</span>
+                <span className='font-semibold'>{todo.title}</span>
               </div>
               <div className='text-gray-500'>Created: {todo.created}</div>
               <div className='text-gray-500'>Updated: {todo.updated}</div>
