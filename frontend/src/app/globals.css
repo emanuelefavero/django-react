@@ -12,11 +12,13 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary: oklch(59.2% 0.249 0.584);
+  --focus: oklch(71.79% 0.20223 349.296 / 0.8);
 
   @media (prefers-color-scheme: dark) {
-    --primary: oklch(71.8% 0.202 349.761);
     --background: #0a0a0a;
     --foreground: #efefef;
+    --primary: oklch(71.8% 0.202 349.761);
+    --focus: oklch(59.814% 0.24201 1.009 / 0.8);
   }
 }
 
