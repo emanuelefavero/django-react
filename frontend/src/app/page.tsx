@@ -1,5 +1,5 @@
+import TodoList from '@/components/todo/TodoList'
 import { todoApiUrl } from '@/config/baseUrl'
-import type { Todo } from '@/types/todo'
 import { Suspense } from 'react'
 
 async function fetchTodos() {
@@ -17,17 +17,7 @@ export default async function Home() {
       <h1 className='text-pink-500'>Hello</h1>
 
       <Suspense fallback={<div>Loading...</div>}>
-        <ul>
-          {todos.map((todo: Todo) => (
-            <li key={todo.id}>
-              <div>
-                <span className='font-semibold'>{todo.title}</span>
-              </div>
-              <div className='text-gray-500'>Created: {todo.created}</div>
-              <div className='text-gray-500'>Updated: {todo.updated}</div>
-            </li>
-          ))}
-        </ul>
+        <TodoList todos={todos} />
       </Suspense>
     </>
   )
