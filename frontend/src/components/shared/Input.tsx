@@ -2,6 +2,8 @@ import { cn } from '@/lib/utils'
 
 type Props = React.ComponentPropsWithRef<'input'> & {}
 
+// TODO Fix input width on small screens
+
 export default function Input({ className, ...props }: Props) {
   return (
     <input
