@@ -1,3 +1,4 @@
+import AddTodo from '@/components/todo/AddTodo'
 import TodoList from '@/components/todo/TodoList'
 import { todoApiUrl } from '@/config/baseUrl'
 import { Suspense } from 'react'
@@ -17,6 +18,7 @@ export default async function Home() {
   return (
     <>
       <h1 className='text-pink-500'>Todo List</h1>
+      <AddTodo />
 
       <Suspense fallback={<div>Loading Todos...</div>}>
         <TodoList todos={todos} />
