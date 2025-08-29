@@ -12,11 +12,13 @@ async function fetchTodos() {
 export default async function Home() {
   const todos = await fetchTodos()
 
+  if (!todos || todos.length === 0) return <div>No todos found</div>
+
   return (
     <>
-      <h1 className='text-pink-500'>Hello</h1>
+      <h1 className='text-pink-500'>Todo List</h1>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading Todos...</div>}>
         <TodoList todos={todos} />
       </Suspense>
     </>
