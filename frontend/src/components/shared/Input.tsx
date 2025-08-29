@@ -5,11 +5,14 @@ import { cn } from '@/lib/utils'
 const baseStyles = cn(
   'rounded-lg border border-neutral-400 bg-neutral-100 px-2 py-1 text-sm transition duration-200 placeholder:text-neutral-400 disabled:opacity-50',
 
-  'hover:not-focus:border-neutral-500', // Hover
+  // Hover
+  'hover:not-focus:border-neutral-500',
 
-  'focus:outline-none focus-visible:bg-transparent focus-visible:not-invalid:border-emerald-600 focus-visible:invalid:border-pink-600', // Focus
+  // Focus
+  'focus:outline-none focus-visible:bg-transparent focus-visible:not-invalid:border-emerald-600 focus-visible:invalid:border-pink-600',
 
-  'dark:border-neutral-700 dark:bg-neutral-900 dark:placeholder:text-neutral-500 dark:hover:not-focus:border-neutral-600 dark:focus-visible:not-invalid:border-emerald-700 dark:focus-visible:invalid:border-pink-800', // Dark
+  // Dark
+  'dark:border-neutral-700 dark:bg-neutral-900 dark:placeholder:text-neutral-500 dark:hover:not-focus:border-neutral-600 dark:focus-visible:not-invalid:border-emerald-700 dark:focus-visible:invalid:border-pink-800',
 )
 
 type Props = React.ComponentPropsWithRef<'input'> & {}
