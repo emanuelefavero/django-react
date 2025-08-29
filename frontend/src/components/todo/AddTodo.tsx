@@ -17,6 +17,12 @@ export default function AddTodo() {
         name='title'
         placeholder='Add a new todo'
         required
+        maxLength={100}
+        minLength={3}
+        inputMode='text'
+        enterKeyHint='done'
+        autoComplete='off'
+        pattern='^(?=[^<>]*\S)[^<>]*$'
       />
       <SubmitButton label='Add Todo' pendingLabel='Adding...' />
     </form>
