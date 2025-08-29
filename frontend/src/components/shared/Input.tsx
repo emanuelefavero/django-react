@@ -1,7 +1,5 @@
 import { cn } from '@/lib/utils'
 
-type Props = React.ComponentPropsWithRef<'input'> & {}
-
 // TODO Fix input width on small screens
 
 const baseStyles = cn(
@@ -13,6 +11,8 @@ const baseStyles = cn(
 
   'dark:border-neutral-700 dark:bg-neutral-900 dark:placeholder:text-neutral-500 dark:hover:not-focus:border-neutral-600 dark:focus-visible:not-invalid:border-emerald-700 dark:focus-visible:invalid:border-pink-800', // Dark
 )
+
+type Props = React.ComponentPropsWithRef<'input'> & {}
 
 export default function Input({ className, ...props }: Props) {
   return <input className={cn(baseStyles, className)} {...props} />
