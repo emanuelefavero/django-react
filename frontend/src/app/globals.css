@@ -10,15 +10,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: oklch(59.2% 0.249 0.584);
 
   @media (prefers-color-scheme: dark) {
+    --primary: oklch(71.8% 0.202 349.761);
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #efefef;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: system-ui, Inter, Helvetica, Roboto, sans-serif;
+  font-family:
+    Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
