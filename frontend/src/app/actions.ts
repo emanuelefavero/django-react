@@ -8,7 +8,7 @@ export async function addTodo(formData: FormData) {
   const title = formData.get('title')
   if (!title) throw new Error('Title is required')
 
-  const response = await fetch(todoApiUrl, {
+  const response = await fetch(`${todoApiUrl}/`, {
     method: 'POST',
     body: JSON.stringify({ title }),
     headers: {
