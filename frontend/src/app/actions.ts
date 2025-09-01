@@ -1,6 +1,7 @@
 'use server'
 
 import { todoApiUrl } from '@/config/baseUrl'
+import { revalidatePath } from 'next/cache'
 
 // TODO move this file to app/actions/todo.ts
 
@@ -18,6 +19,8 @@ export async function addTodo(formData: FormData) {
 
   if (!response.ok) throw new Error('Failed to add todo')
 
+  revalidatePath('/')
+
   return response.json()
 }
 
@@ -28,6 +31,8 @@ export async function deleteTodo(id: number) {
   })
 
   if (!response.ok) throw new Error('Failed to delete todo')
+
+  revalidatePath('/')
 
   // 204 No Content: do not attempt to parse JSON
   if (response.status === 204) return null

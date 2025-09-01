@@ -13,9 +13,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
   return (
     <li className={cn(className)} {...props}>
       <div className='flex flex-wrap items-center'>
-        <div className='font-semibold'>
-          {todo.id} - {todo.title}
-        </div>
+        <div className='font-semibold'>{todo.title}</div>
         <Button onClick={() => deleteTodo(todo.id)} className='ml-2'>
           Delete
         </Button>
