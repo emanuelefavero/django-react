@@ -20,3 +20,16 @@ export async function addTodo(formData: FormData) {
 
   return response.json()
 }
+
+// Delete todo
+export async function deleteTodo(id: number) {
+  const response = await fetch(`${todoApiUrl}/${id}/`, {
+    method: 'DELETE',
+  })
+
+  if (!response.ok) throw new Error('Failed to delete todo')
+
+  // 204 No Content: do not attempt to parse JSON
+  if (response.status === 204) return null
+  return response.json()
+}
