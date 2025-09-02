@@ -10,8 +10,6 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO update the `updated` relative date when the `toggleTodo` button is clicked
-
 export default function TodoItem({ todo, className, ...props }: Props) {
   return (
     <li
