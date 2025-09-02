@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache'
 
 // TODO move this file to app/actions/todo.ts
 
+// * Add todo
 export async function addTodo(formData: FormData) {
   const title = formData.get('title')
   if (!title) throw new Error('Title is required')
@@ -24,7 +25,24 @@ export async function addTodo(formData: FormData) {
   return response.json()
 }
 
-// Delete todo
+// * Toggle todo
+export async function toggleTodo(id: number, completed: boolean) {
+  const response = await fetch(`${todoApiUrl}/${id}/`, {
+    method: 'PATCH',
+    body: JSON.stringify({ completed }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  if (!response.ok) throw new Error('Failed to toggle todo')
+
+  revalidatePath('/')
+
+  return response.json()
+}
+
+// * Delete todo
 export async function deleteTodo(id: number) {
   const response = await fetch(`${todoApiUrl}/${id}/`, {
     method: 'DELETE',
