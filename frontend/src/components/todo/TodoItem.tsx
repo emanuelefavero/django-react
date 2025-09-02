@@ -26,6 +26,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
         )}
       >
         <div className='font-semibold'>{todo.title}</div>
+
         <div className='flex flex-wrap gap-2'>
           <Button
             onClick={() => toggleTodo(todo.id, !todo.completed)}
