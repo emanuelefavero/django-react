@@ -14,8 +14,14 @@ type Props = React.ComponentPropsWithRef<'li'> & {
 
 export default function TodoItem({ todo, className, ...props }: Props) {
   return (
-    <li className={cn(className)} {...props}>
-      <div className='flex flex-wrap items-center justify-between'>
+    <li
+      className={cn(
+        'flex flex-col flex-wrap gap-2 rounded-lg border border-neutral-500/50 px-3 py-2',
+        className,
+      )}
+      {...props}
+    >
+      <div className='flex flex-wrap items-center justify-between gap-2'>
         <div className='font-semibold'>{todo.title}</div>
         <div className='flex flex-wrap gap-2'>
           <Button
@@ -32,8 +38,11 @@ export default function TodoItem({ todo, className, ...props }: Props) {
           <Button onClick={() => deleteTodo(todo.id)}>Delete</Button>
         </div>
       </div>
-      <div className='text-neutral-500'>Created: {todo.created}</div>
-      <div className='text-neutral-500'>Updated: {todo.updated}</div>
+
+      <div>
+        <div className='text-neutral-500'>Created: {todo.created}</div>
+        <div className='text-neutral-500'>Updated: {todo.updated}</div>
+      </div>
     </li>
   )
 }

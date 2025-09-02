@@ -17,12 +17,14 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className='text-pink-500'>Todo List</h1>
-      <AddTodo />
+      <div className='flex flex-col gap-4'>
+        <h1 className='text-pink-500'>Todo List</h1>
+        <AddTodo />
 
-      <Suspense fallback={<div>Loading Todos...</div>}>
-        <TodoList todos={todos} />
-      </Suspense>
+        <Suspense fallback={<div>Loading Todos...</div>}>
+          <TodoList todos={todos} />
+        </Suspense>
+      </div>
     </>
   )
 }

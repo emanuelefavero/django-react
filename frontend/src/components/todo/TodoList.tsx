@@ -8,7 +8,7 @@ type Props = React.ComponentPropsWithRef<'ul'> & {
 
 export default function TodoList({ todos, className, ...props }: Props) {
   return (
-    <ul className={cn('max-w-sm', className)} {...props}>
+    <ul className={cn('flex max-w-sm flex-col gap-2', className)} {...props}>
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
