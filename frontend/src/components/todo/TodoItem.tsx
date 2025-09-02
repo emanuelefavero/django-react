@@ -5,7 +5,6 @@ import Button from '@/components/shared/Button'
 import { cn } from '@/lib/utils'
 import type { Todo } from '@/types/todo'
 
-// TODO add todo item style (card item bg color based on completion status)
 // TODO use the created and updated fields to show the date in human friendly format (e.g. 1 hour ago), check that updated is more recent, use libraries like date-fns or dayjs
 
 type Props = React.ComponentPropsWithRef<'li'> & {
@@ -16,12 +15,17 @@ export default function TodoItem({ todo, className, ...props }: Props) {
   return (
     <li
       className={cn(
-        'flex flex-col flex-wrap gap-2 rounded-lg border border-neutral-500/50 px-3 py-2',
+        'flex flex-col flex-wrap rounded-lg border border-neutral-500/40',
         className,
       )}
       {...props}
     >
-      <div className='flex flex-wrap items-center justify-between gap-2'>
+      <div
+        className={cn(
+          'flex flex-wrap items-center justify-between gap-2 border-b border-neutral-500/40 bg-neutral-500/10 px-3 py-2',
+          todo.completed && 'bg-green-500/10',
+        )}
+      >
         <div className='font-semibold'>{todo.title}</div>
         <div className='flex flex-wrap gap-2'>
           <Button
@@ -39,7 +43,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
         </div>
       </div>
 
-      <div>
+      <div className='px-3 py-2'>
         <div className='text-neutral-500'>Created: {todo.created}</div>
         <div className='text-neutral-500'>Updated: {todo.updated}</div>
       </div>
