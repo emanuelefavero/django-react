@@ -18,7 +18,7 @@ const baseStyles = cn(
 
 type Props = React.ComponentPropsWithRef<'button'> & {}
 
-export default function SubmitButton({ children, className, ...props }: Props) {
+export default function Button({ children, className, ...props }: Props) {
   return (
     <button className={cn(baseStyles, className)} {...props}>
       {children}

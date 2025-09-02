@@ -2,14 +2,15 @@
 
 import { deleteTodo, toggleTodo } from '@/app/actions'
 import Button from '@/components/shared/Button'
+import RelativeDate from '@/components/shared/RelativeDate'
 import { cn } from '@/lib/utils'
 import type { Todo } from '@/types/todo'
-
-// TODO use the created and updated fields to show the date in human friendly format (e.g. 1 hour ago), check that updated is more recent, use libraries like date-fns or dayjs
 
 type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
+
+// TODO update the `updated` relative date when the `toggleTodo` button is clicked
 
 export default function TodoItem({ todo, className, ...props }: Props) {
   return (
@@ -44,8 +45,12 @@ export default function TodoItem({ todo, className, ...props }: Props) {
       </div>
 
       <div className='px-3 py-2'>
-        <div className='text-neutral-500'>Created: {todo.created}</div>
-        <div className='text-neutral-500'>Updated: {todo.updated}</div>
+        <div className='text-neutral-500'>
+          Created: <RelativeDate date={todo.created} />
+        </div>
+        <div className='text-neutral-500'>
+          Updated: <RelativeDate date={todo.updated} />
+        </div>
       </div>
     </li>
   )
