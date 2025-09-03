@@ -52,13 +52,14 @@ export default function AddTodo() {
         type='text'
         name='title'
         placeholder='Add a new todo'
-        // required
+        required
         maxLength={100}
         minLength={3}
         inputMode='text'
         enterKeyHint='done'
         autoComplete='off'
         pattern='^(?=[^<>]*\S)[^<>]*$'
+        // defaultValue={state.title}
       />
       <SubmitButton
         label={isPending ? 'Adding...' : 'Add Todo'}
