@@ -27,19 +27,23 @@ export async function addTodo(formData: FormData) {
 
 // * Toggle todo
 export async function toggleTodo(id: number, completed: boolean) {
-  const response = await fetch(`${todoApiUrl}/${id}/`, {
-    method: 'PATCH',
-    body: JSON.stringify({ completed }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+  try {
+    const response = await fetch(`${todoApiUrl}/${id}/`, {
+      method: 'PATCH',
+      body: JSON.stringify({ completed }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
-  if (!response.ok) throw new Error('Failed to toggle todo')
+    if (!response.ok) return { error: 'Failed to toggle todo' }
 
-  revalidatePath('/')
+    revalidatePath('/')
 
-  return response.json()
+    return response.json()
+  } catch (err) {
+    return { error: (err as Error).message }
+  }
 }
 
 // * Delete todo

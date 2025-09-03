@@ -3,6 +3,7 @@
 import { deleteTodo, toggleTodo } from '@/app/actions'
 import Button from '@/components/shared/Button'
 import RelativeDate from '@/components/shared/RelativeDate'
+import { toast } from '@/lib/sonner'
 import { cn } from '@/lib/utils'
 import type { Todo } from '@/types/todo'
 
@@ -13,6 +14,17 @@ type Props = React.ComponentPropsWithRef<'li'> & {
 // TODO Catch server actions errors gracefully with sonner toasts
 
 export default function TodoItem({ todo, className, ...props }: Props) {
+  const handleToggle = async () => {
+    const result = await toggleTodo(todo.id, !todo.completed)
+    if (result.error)
+      toast.error(result.error, {
+        cancel: {
+          label: 'Dismiss',
+          onClick: () => {},
+        },
+      })
+  }
+
   return (
     <li
       className={cn(
@@ -31,7 +43,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
 
         <div className='flex flex-wrap gap-2'>
           <Button
-            onClick={() => toggleTodo(todo.id, !todo.completed)}
+            onClick={handleToggle}
             className={cn(
               !todo.completed &&
                 'border-neutral-500 text-neutral-500 hover:bg-neutral-500 hover:text-(--background)',
