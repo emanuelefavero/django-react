@@ -11,8 +11,6 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO Catch server actions errors gracefully with sonner toasts
-
 export default function TodoItem({ todo, className, ...props }: Props) {
   const handleToggle = async () => {
     const result = await toggleTodo(todo.id, !todo.completed)
@@ -27,7 +25,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
 
   const handleDelete = async () => {
     const result = await deleteTodo(todo.id)
-    if (result.error)
+    if (result?.error)
       toast.error(result.error, {
         cancel: {
           label: 'Dismiss',
