@@ -25,6 +25,17 @@ export default function TodoItem({ todo, className, ...props }: Props) {
       })
   }
 
+  const handleDelete = async () => {
+    const result = await deleteTodo(todo.id)
+    if (result.error)
+      toast.error(result.error, {
+        cancel: {
+          label: 'Dismiss',
+          onClick: () => {},
+        },
+      })
+  }
+
   return (
     <li
       className={cn(
@@ -53,7 +64,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
           >
             ✔︎
           </Button>
-          <Button onClick={() => deleteTodo(todo.id)}>Delete</Button>
+          <Button onClick={handleDelete}>Delete</Button>
         </div>
       </div>
 
