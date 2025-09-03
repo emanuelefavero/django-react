@@ -19,12 +19,14 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }
       toastOptions={{
         classNames: {
-          // toast: /*tw*/ '!bg-neutral-500',
-          // title: /*tw*/ '!text-white',
-          // description: /*tw*/ '!text-neutral-300',
-          // actionButton: /*tw*/ '!bg-white/10',
-          // cancelButton: /*tw*/ '!bg-white/10',
-          // closeButton: /*tw*/ '!bg-white/10',
+          description: /*tw*/ '!text-muted-foreground',
+          actionButton:
+            /*tw*/ '!bg-card !text-primary !border !border-primary hover:!bg-primary hover:!text-background',
+          cancelButton:
+            /*tw*/ '!border !border-muted-foreground !bg-card !text-muted-foreground hover:!bg-muted-foreground hover:!text-background',
+          // toast: /*tw*/ '',
+          // title: /*tw*/ '',
+          // closeButton: /*tw*/ '',
         },
       }}
       {...props}
