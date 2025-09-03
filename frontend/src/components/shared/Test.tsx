@@ -13,7 +13,11 @@ TODO add a `@/components/shared/Toast.tsx` component that wraps sonner's `toast`
 
 // EXAMPLE:
 import { toast } from 'sonner'
-import { successToastClassNames, errorToastClassNames } from '@/styles/sonner'
+import {
+  defaultToastClassNames,
+  errorToastClassNames,
+  successToastClassNames,
+} from '@/styles/sonner'
 
 export type ToastOptions = Parameters<typeof toast>[1]
 export type ToastVariant = 'default' | 'success' | 'error'

@@ -5,9 +5,9 @@ export const defaultToastClassNames = {
   cancelButton:
     /*tw*/ '!bg-card !border !border-muted-foreground !text-muted-foreground hover:!bg-muted-foreground hover:!text-background',
 
-  // toast: /*tw*/ '',
-  // title: /*tw*/ '',
-  // closeButton: /*tw*/ '',
+  toast: /*tw*/ '',
+  title: /*tw*/ '',
+  closeButton: /*tw*/ '',
 }
 
 export const errorToastClassNames = {
@@ -19,8 +19,8 @@ export const errorToastClassNames = {
     /*tw*/ '!bg-error !border !border-muted-foreground !text-muted-foreground hover:!bg-muted-foreground hover:!text-background',
   icon: /*tw*/ '!text-error-foreground',
 
-  // title: /*tw*/ '',
-  // closeButton: /*tw*/ '',
+  title: /*tw*/ '',
+  closeButton: /*tw*/ '',
 }
 
 export const successToastClassNames = {
@@ -32,6 +32,6 @@ export const successToastClassNames = {
     /*tw*/ '!bg-success !border !border-muted-foreground !text-muted-foreground hover:!bg-muted-foreground hover:!text-background',
   icon: /*tw*/ '!text-success-foreground',
 
-  // title: /*tw*/ '',
-  // closeButton: /*tw*/ '',
+  title: /*tw*/ '',
+  closeButton: /*tw*/ '',
 }
