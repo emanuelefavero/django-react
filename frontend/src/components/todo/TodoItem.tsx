@@ -11,21 +11,6 @@ type Props = React.ComponentPropsWithRef<'li'> & {
 }
 
 // TODO Catch server actions errors gracefully with sonner toasts
-/*
-TODO Create global tailwind classes for success and error toasts
-
-Example usage:
-toast.error('Hello World', {
-  classNames: {
-    toast: '!bg-red-500',
-    title: '!text-white',
-    description: '!text-neutral-300',
-    actionButton: '!bg-white/10',
-    cancelButton: '!bg-white/10',
-    closeButton: '!bg-white/10',
-  },
-})
-*/
 
 export default function TodoItem({ todo, className, ...props }: Props) {
   return (

@@ -1,3 +1,4 @@
+import Test from '@/components/shared/Test'
 import AddTodo from '@/components/todo/AddTodo'
 import TodoList from '@/components/todo/TodoList'
 import { todoApiUrl } from '@/config/baseUrl'
@@ -17,6 +18,7 @@ export default async function Home() {
 
   return (
     <>
+      <Test />
       <div className='flex flex-col gap-4'>
         <h1 className='text-pink-500'>Todo List</h1>
         <AddTodo />
