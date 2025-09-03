@@ -10,18 +10,16 @@ export default function Test() {
         onClick={() => {
           toast('Default Toast', {
             description: 'This is a test toast',
-            duration: 60000,
             action: {
-              label: 'Undo',
-              onClick: () => console.log('Undo'),
+              label: 'Dismiss',
+              onClick: () => {},
             },
             cancel: {
-              label: 'Cancel',
-              onClick: () => console.log('Cancel'),
+              label: 'Dismiss',
+              onClick: () => {},
             },
-            closeButton: true,
             dismissible: true,
-            // invert: true,
+            invert: true,
             position: 'top-right',
           })
         }}
