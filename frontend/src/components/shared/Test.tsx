@@ -1,7 +1,11 @@
 'use client'
 
 import Button from '@/components/shared/Button'
-import { errorToastClassNames, successToastClassNames } from '@/styles/sonner'
+import {
+  defaultToastClassNames,
+  errorToastClassNames,
+  successToastClassNames,
+} from '@/styles/sonner'
 import { toast } from 'sonner'
 
 // TODO style toasts (to style default toast, @see @/components/ui/sonner.tsx)
@@ -46,6 +50,8 @@ export default function Test() {
       <Button
         onClick={() => {
           toast('Default Toast', {
+            classNames: defaultToastClassNames,
+
             description: 'This is a test toast',
             duration: 60000,
             action: {
