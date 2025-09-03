@@ -1,21 +1,23 @@
 export const errorToastClassNames = {
-  toast: /*tw*/ '!bg-red-500',
-  title: /*tw*/ '!text-white',
-  description: /*tw*/ '!text-neutral-300',
-  actionButton: /*tw*/ '!bg-white/10',
-  cancelButton: /*tw*/ '!bg-white/10',
-  closeButton: /*tw*/ '!bg-white/10',
-  icon: /*tw*/ '!text-white',
+  toast: /*tw*/ '!bg-error',
+  actionButton:
+    /*tw*/ '!bg-error !border-error-foreground !text-error-foreground hover:!bg-error-foreground hover:!text-error',
+  cancelButton: /*tw*/ '!bg-error',
+  icon: /*tw*/ '!text-error-foreground',
+
+  // title: /*tw*/ '',
+  // description: /*tw*/ '',
+  // closeButton: /*tw*/ '',
 }
 
 export const successToastClassNames = {
   toast: /*tw*/ '!bg-success',
   actionButton:
     /*tw*/ '!bg-success !border-success-foreground !text-success-foreground hover:!bg-success-foreground hover:!text-success',
+  cancelButton: /*tw*/ '!bg-success',
   icon: /*tw*/ '!text-success-foreground',
 
   // title: /*tw*/ '',
   // description: /*tw*/ '',
-  // cancelButton: /*tw*/ '',
   // closeButton: /*tw*/ '',
 }
