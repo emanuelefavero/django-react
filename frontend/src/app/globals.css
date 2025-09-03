@@ -5,6 +5,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-focus: var(--focus);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -46,6 +50,8 @@
   --foreground: #171717;
   --primary: oklch(59.2% 0.249 0.584);
   --focus: oklch(71.79% 0.20223 349.296 / 0.8);
+  --success: oklch(97.042% 0.01821 150.86);
+  --success-foreground: oklch(72.276% 0.19199 149.6);
 
   /* Shadcn variables */
   --radius: 0.625rem;
@@ -83,6 +89,8 @@
     --foreground: #efefef;
     --primary: oklch(71.8% 0.202 349.761);
     --focus: oklch(59.814% 0.24201 1.009 / 0.8);
+    --success: oklch(21.574% 0.02591 149.063);
+    --success-foreground: oklch(72.276% 0.19199 149.6);
 
     /* Shadcn variables */
     --card: oklch(0.205 0 0);
