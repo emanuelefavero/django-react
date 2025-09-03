@@ -7,22 +7,27 @@ import { revalidatePath } from 'next/cache'
 
 // * Add todo
 export async function addTodo(formData: FormData) {
-  const title = formData.get('title')
-  if (!title) throw new Error('Title is required')
+  // return { error: 'Failed to add todo' }
+  try {
+    const title = formData.get('title')
+    if (!title) return { error: 'Title is required' }
 
-  const response = await fetch(`${todoApiUrl}/`, {
-    method: 'POST',
-    body: JSON.stringify({ title }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+    const response = await fetch(`${todoApiUrl}/`, {
+      method: 'POST',
+      body: JSON.stringify({ title }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
-  if (!response.ok) throw new Error('Failed to add todo')
+    if (!response.ok) return { error: 'Failed to add todo' }
 
-  revalidatePath('/')
+    revalidatePath('/')
 
-  return response.json()
+    return response.json()
+  } catch (err) {
+    return { error: (err as Error).message }
+  }
 }
 
 // * Toggle todo

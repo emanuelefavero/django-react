@@ -1,15 +1,49 @@
+'use client'
+
 import { addTodo } from '@/app/actions'
 import Input from '@/components/shared/Input'
 import SubmitButton from '@/components/shared/SubmitButton'
-import { useId } from 'react'
+import { toast } from '@/lib/sonner'
+import { useActionState, useId } from 'react'
 
-// TODO Add useActionState for rendering `addTodo` action errors
+type InitialState = { title?: string; error?: string }
+
+async function action(_: InitialState, formData: FormData) {
+  const response = await addTodo(formData)
+
+  if (response.error) {
+    toast.error(response.error, {
+      cancel: {
+        label: 'Dismiss',
+        onClick: () => {},
+      },
+    })
+  }
+
+  // TIP: You can also show a success toast here if response.title is defined
+  // if (response.title) {
+  //   toast.success(`New todo added!`, {
+  //     description: response.title,
+  //     action: {
+  //       label: 'Dismiss',
+  //       onClick: () => {},
+  //     },
+  //   })
+  // }
+
+  return response
+}
+
+const initialState = { error: null }
 
 export default function AddTodo() {
   const titleInputId = useId()
+  const [state, formAction, isPending] = useActionState(action, initialState)
+
+  console.log(state)
 
   return (
-    <form action={addTodo} className='flex flex-wrap gap-2'>
+    <form action={formAction} className='flex flex-wrap gap-2'>
       <label htmlFor={titleInputId} className='sr-only'>
         Title
       </label>
@@ -18,7 +52,7 @@ export default function AddTodo() {
         type='text'
         name='title'
         placeholder='Add a new todo'
-        required
+        // required
         maxLength={100}
         minLength={3}
         inputMode='text'
@@ -26,7 +60,10 @@ export default function AddTodo() {
         autoComplete='off'
         pattern='^(?=[^<>]*\S)[^<>]*$'
       />
-      <SubmitButton label='Add Todo' pendingLabel='Adding...' />
+      <SubmitButton
+        label={isPending ? 'Adding...' : 'Add Todo'}
+        className='min-w-24'
+      />
     </form>
   )
 }
