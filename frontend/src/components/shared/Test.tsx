@@ -8,7 +8,6 @@ import {
 } from '@/styles/sonner'
 import { toast } from 'sonner'
 
-// TODO style toasts (to style default toast, @see @/components/ui/sonner.tsx)
 /*
 TODO add a `@/components/shared/Toast.tsx` component that wraps sonner's `toast` functions and export it with variants "default", "success", and "error"
 
@@ -38,7 +37,7 @@ export function Toast({ variant = 'default', title, classNames, ...options }: Cu
     })
   }
   return toast(title, {
-    classNames,
+    classNames: classNames ?? defaultToastClassNames,
     ...options,
   })
 }
