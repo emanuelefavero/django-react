@@ -3,8 +3,6 @@
 import { todoApiUrl } from '@/config/baseUrl'
 import { revalidatePath } from 'next/cache'
 
-// TODO move this file to app/actions/todo.ts
-
 // * Add todo
 export async function addTodo(formData: FormData) {
   // return { error: 'Failed to add todo' }

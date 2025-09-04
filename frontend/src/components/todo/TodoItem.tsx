@@ -1,6 +1,6 @@
 'use client'
 
-import { deleteTodo, toggleTodo } from '@/app/actions'
+import { deleteTodo, toggleTodo } from '@/app/actions/todo'
 import Button from '@/components/shared/Button'
 import RelativeDate from '@/components/shared/RelativeDate'
 import { toast } from '@/lib/sonner'

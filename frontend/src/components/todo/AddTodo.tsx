@@ -1,6 +1,6 @@
 'use client'
 
-import { addTodo } from '@/app/actions'
+import { addTodo } from '@/app/actions/todo'
 import Input from '@/components/shared/Input'
 import SubmitButton from '@/components/shared/SubmitButton'
 import { toast } from '@/lib/sonner'
