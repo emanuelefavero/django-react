@@ -11,6 +11,8 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
+// TODO use tailwind custom styles instead of hardcoded colors
+
 export default function TodoItem({ todo, className, ...props }: Props) {
   const handleToggle = async () => {
     const result = await toggleTodo(todo.id, !todo.completed)
