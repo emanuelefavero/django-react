@@ -55,9 +55,9 @@ export default function TodoItem({ todo, className, ...props }: Props) {
             onClick={handleToggle}
             className={cn(
               !todo.completed &&
-                'border-neutral-500 text-neutral-500 hover:bg-neutral-500 hover:text-(--background)',
+                'border-neutral-500 text-neutral-500 hover:bg-neutral-500 hover:text-background',
               todo.completed &&
-                'border-green-500 text-green-500 hover:bg-green-500 hover:text-(--background)',
+                'border-green-500 text-green-500 hover:bg-green-500 hover:text-background',
             )}
           >
             ✔︎
