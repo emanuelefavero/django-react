@@ -11,8 +11,6 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO use tailwind custom styles instead of hardcoded colors
-
 export default function TodoItem({ todo, className, ...props }: Props) {
   const handleToggle = async () => {
     const result = await toggleTodo(todo.id, !todo.completed)
@@ -39,14 +37,14 @@ export default function TodoItem({ todo, className, ...props }: Props) {
   return (
     <li
       className={cn(
-        'flex flex-col flex-wrap rounded-lg border border-neutral-500/40',
+        'flex flex-col flex-wrap overflow-hidden rounded-lg border border-border',
         className,
       )}
       {...props}
     >
       <div
         className={cn(
-          'flex flex-wrap items-center justify-between gap-2 border-b border-neutral-500/40 bg-neutral-500/10 px-3 py-2',
+          'flex flex-wrap items-center justify-between gap-2 border-b border-border bg-input px-3 py-2',
           todo.completed && 'bg-green-500/10',
         )}
       >
@@ -69,10 +67,10 @@ export default function TodoItem({ todo, className, ...props }: Props) {
       </div>
 
       <div className='px-3 py-2'>
-        <div className='text-neutral-500'>
+        <div className='text-muted-foreground'>
           Created: <RelativeDate date={todo.created} />
         </div>
-        <div className='text-neutral-500'>
+        <div className='text-muted-foreground'>
           Updated: <RelativeDate date={todo.updated} />
         </div>
       </div>
