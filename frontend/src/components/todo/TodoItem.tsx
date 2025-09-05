@@ -45,7 +45,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
       <div
         className={cn(
           'flex flex-wrap items-center justify-between gap-2 border-b border-border bg-input px-3 py-2',
-          todo.completed && 'bg-green-500/10',
+          todo.completed && 'bg-success',
         )}
       >
         <div className='font-semibold'>{todo.title}</div>
@@ -55,9 +55,9 @@ export default function TodoItem({ todo, className, ...props }: Props) {
             onClick={handleToggle}
             className={cn(
               !todo.completed &&
-                'border-neutral-500 text-neutral-500 hover:bg-neutral-500 hover:text-background',
+                'border-muted-foreground text-muted-foreground hover:bg-muted-foreground hover:text-background',
               todo.completed &&
-                'border-green-500 text-green-500 hover:bg-green-500 hover:text-background',
+                'border-success-foreground text-success-foreground hover:bg-success-foreground hover:text-background',
             )}
           >
             ✔︎
