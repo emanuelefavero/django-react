@@ -16,11 +16,11 @@ export default function TodoList({ todos, className, ...props }: Props) {
         {todos.map((todo) => (
           <motion.div
             key={todo.id}
-            layout
-            initial={{ opacity: 0, y: -24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 24 }}
-            transition={{ duration: 0.2 }}
+            layout // Adds auto animations for layout changes
+            initial={{ opacity: 0, y: -24 }} // Entry animation
+            animate={{ opacity: 1, y: 0 }} // Animate to (visible state)
+            exit={{ opacity: 0, y: 24 }} // Exit animation
+            transition={{ duration: 0.2 }} // Animation duration
           >
             <TodoItem todo={todo} />
           </motion.div>
