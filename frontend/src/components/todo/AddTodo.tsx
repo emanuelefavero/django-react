@@ -38,9 +38,7 @@ const initialState = { error: null }
 
 export default function AddTodo() {
   const titleInputId = useId()
-  const [state, formAction, isPending] = useActionState(action, initialState)
-
-  console.log(state)
+  const [, formAction, isPending] = useActionState(action, initialState)
 
   return (
     <form action={formAction} className='flex flex-wrap gap-2'>
