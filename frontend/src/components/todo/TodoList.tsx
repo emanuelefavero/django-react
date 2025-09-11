@@ -2,7 +2,8 @@
 
 import { cn } from '@/lib/utils'
 import type { Todo } from '@/types/todo'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence } from 'motion/react'
+import * as motion from 'motion/react-client'
 import TodoItem from './TodoItem'
 
 type Props = React.ComponentPropsWithRef<'ul'> & {
