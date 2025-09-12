@@ -14,8 +14,6 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO color the edit button yellow/orange
-// TODO color the save button green
 // TODO color the delete button red
 // TODO style the input edit field
 // TODO make sure to justify buttons to the right when title is long
