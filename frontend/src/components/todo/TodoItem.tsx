@@ -13,9 +13,11 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO add edit functionality (EDIT button + inline editing)
-// TODO EDIT button should turn into SAVE button when editing
-// TODO pressing ESC should cancel the edit, pressing ENTER should save the edit
+// TODO add icons to edit and save buttons
+// TODO color the edit button yellow/orange
+// TODO color the save button green
+// TODO add icon to the delete button
+// TODO color the delete button red
 // TODO implement "Clear Completed" button to delete all completed todos
 
 export default function TodoItem({ todo, className, ...props }: Props) {
