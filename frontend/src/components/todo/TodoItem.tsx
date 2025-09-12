@@ -7,14 +7,13 @@ import RelativeDate from '@/components/shared/RelativeDate'
 import { toast } from '@/lib/sonner'
 import { cn } from '@/lib/utils'
 import type { Todo } from '@/types/todo'
-import { Save, SquarePen } from 'lucide-react'
+import { Save, SquarePen, Trash2 } from 'lucide-react'
 import { useRef, useState } from 'react'
 
 type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO add icon to the delete button
 // TODO add aria labels and titles to buttons since they have only icons
 // TODO make sure the edit and save buttons are properly clickable when clicking on the button borders
 // TODO color the edit button yellow/orange
@@ -139,7 +138,9 @@ export default function TodoItem({ todo, className, ...props }: Props) {
           >
             ✔︎
           </Button>
-          <Button onClick={handleDelete}>Delete</Button>
+          <Button onClick={handleDelete}>
+            <Trash2 size={16} />
+          </Button>
         </div>
       </div>
 
