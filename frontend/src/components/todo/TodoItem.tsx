@@ -137,7 +137,12 @@ export default function TodoItem({ todo, className, ...props }: Props) {
 
           {/* Edit/Save */}
           {isEditing ? (
-            <Button onClick={handleSaveEdit} aria-label='Save' title='Save'>
+            <Button
+              onClick={handleSaveEdit}
+              aria-label='Save'
+              title='Save'
+              className='border-success-foreground text-success-foreground hover:bg-success-foreground'
+            >
               <Save size={16} />
             </Button>
           ) : (
