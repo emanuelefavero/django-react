@@ -14,7 +14,6 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO add aria labels and titles to buttons since they have only icons
 // TODO make sure the edit and save buttons are properly clickable when clicking on the button borders
 // TODO color the edit button yellow/orange
 // TODO color the save button green
@@ -119,16 +118,20 @@ export default function TodoItem({ todo, className, ...props }: Props) {
 
         <div className='flex flex-wrap gap-2'>
           {isEditing ? (
-            <Button onClick={handleSaveEdit}>
+            <Button onClick={handleSaveEdit} aria-label='Save' title='Save'>
               <Save size={16} />
             </Button>
           ) : (
-            <Button onClick={handleEdit}>
+            <Button onClick={handleEdit} aria-label='Edit' title='Edit'>
               <SquarePen size={16} />
             </Button>
           )}
           <Button
             onClick={handleToggle}
+            aria-label={
+              todo.completed ? 'Mark as Incomplete' : 'Mark as Complete'
+            }
+            title={todo.completed ? 'Mark as Incomplete' : 'Mark as Complete'}
             className={cn(
               !todo.completed &&
                 'border-muted-foreground text-muted-foreground hover:bg-muted-foreground hover:text-background',
@@ -138,7 +141,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
           >
             ✔︎
           </Button>
-          <Button onClick={handleDelete}>
+          <Button onClick={handleDelete} aria-label='Delete' title='Delete'>
             <Trash2 size={16} />
           </Button>
         </div>
