@@ -155,7 +155,12 @@ export default function TodoItem({ todo, className, ...props }: Props) {
           )}
 
           {/* Delete */}
-          <Button onClick={handleDelete} aria-label='Delete' title='Delete'>
+          <Button
+            onClick={handleDelete}
+            aria-label='Delete'
+            title='Delete'
+            className='border-error-foreground text-error-foreground hover:bg-error-foreground'
+          >
             <Trash2 size={16} />
           </Button>
         </div>
