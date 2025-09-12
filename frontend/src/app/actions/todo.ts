@@ -66,3 +66,24 @@ export async function deleteTodo(id: number) {
     return { error: (err as Error).message }
   }
 }
+
+// * Update todo
+export async function updateTodo(id: number, title: string) {
+  try {
+    const response = await fetch(`${todoApiUrl}/${id}/`, {
+      method: 'PUT',
+      body: JSON.stringify({ title }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (!response.ok) return { error: 'Failed to update todo' }
+
+    revalidatePath('/')
+
+    return response.json()
+  } catch (err) {
+    return { error: (err as Error).message }
+  }
+}
