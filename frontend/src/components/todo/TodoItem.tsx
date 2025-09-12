@@ -1,11 +1,13 @@
 'use client'
 
-import { deleteTodo, toggleTodo } from '@/app/actions/todo'
+import { deleteTodo, toggleTodo, updateTodo } from '@/app/actions/todo'
 import Button from '@/components/shared/Button'
+import Input from '@/components/shared/Input'
 import RelativeDate from '@/components/shared/RelativeDate'
 import { toast } from '@/lib/sonner'
 import { cn } from '@/lib/utils'
 import type { Todo } from '@/types/todo'
+import { useRef, useState } from 'react'
 
 type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
@@ -17,15 +19,56 @@ type Props = React.ComponentPropsWithRef<'li'> & {
 // TODO implement "Clear Completed" button to delete all completed todos
 
 export default function TodoItem({ todo, className, ...props }: Props) {
+  const [isEditing, setIsEditing] = useState(false)
+  const [editValue, setEditValue] = useState(todo.title)
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const handleToggle = async () => {
     const result = await toggleTodo(todo.id, !todo.completed)
-    if (result.error)
+    if (result?.error)
       toast.error(result.error, {
         cancel: {
           label: 'Dismiss',
           onClick: () => {},
         },
       })
+  }
+
+  const handleEdit = () => {
+    setIsEditing(true)
+    setEditValue(todo.title)
+    setTimeout(() => {
+      inputRef.current?.focus()
+    }, 0)
+  }
+
+  const handleSaveEdit = async () => {
+    // Validate non-empty title
+    if (editValue.trim() === '') {
+      toast.error('Title cannot be empty', {
+        cancel: {
+          label: 'Dismiss',
+          onClick: () => {},
+        },
+      })
+      return
+    }
+
+    // Update the todo if the title has changed
+    if (editValue !== todo.title) {
+      const result = await updateTodo(todo.id, editValue)
+      if (result?.error) {
+        toast.error(result.error, {
+          cancel: {
+            label: 'Dismiss',
+            onClick: () => {},
+          },
+        })
+        return
+      }
+    }
+
+    setIsEditing(false) // Exit edit mode
   }
 
   const handleDelete = async () => {
@@ -53,9 +96,29 @@ export default function TodoItem({ todo, className, ...props }: Props) {
           todo.completed && 'bg-success',
         )}
       >
-        <div className='font-semibold'>{todo.title}</div>
+        <div className='font-semibold'>
+          {isEditing ? (
+            <Input
+              ref={inputRef}
+              value={editValue}
+              onChange={(e) => setEditValue(e.target.value)}
+              onBlur={handleSaveEdit}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') handleSaveEdit()
+                if (e.key === 'Escape') setIsEditing(false)
+              }}
+            />
+          ) : (
+            todo.title
+          )}
+        </div>
 
         <div className='flex flex-wrap gap-2'>
+          {isEditing ? (
+            <Button onClick={handleSaveEdit}>Save</Button>
+          ) : (
+            <Button onClick={handleEdit}>Edit</Button>
+          )}
           <Button
             onClick={handleToggle}
             className={cn(
