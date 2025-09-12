@@ -7,17 +7,20 @@ import RelativeDate from '@/components/shared/RelativeDate'
 import { toast } from '@/lib/sonner'
 import { cn } from '@/lib/utils'
 import type { Todo } from '@/types/todo'
+import { Save, SquarePen } from 'lucide-react'
 import { useRef, useState } from 'react'
 
 type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO add icons to edit and save buttons
+// TODO add icon to the delete button
+// TODO add aria labels and titles to buttons since they have only icons
+// TODO make sure the edit and save buttons are properly clickable when clicking on the button borders
 // TODO color the edit button yellow/orange
 // TODO color the save button green
-// TODO add icon to the delete button
 // TODO color the delete button red
+// TODO make sure to justify buttons to the right when title is long
 // TODO implement "Clear Completed" button to delete all completed todos
 
 export default function TodoItem({ todo, className, ...props }: Props) {
@@ -117,9 +120,13 @@ export default function TodoItem({ todo, className, ...props }: Props) {
 
         <div className='flex flex-wrap gap-2'>
           {isEditing ? (
-            <Button onClick={handleSaveEdit}>Save</Button>
+            <Button onClick={handleSaveEdit}>
+              <Save size={16} />
+            </Button>
           ) : (
-            <Button onClick={handleEdit}>Edit</Button>
+            <Button onClick={handleEdit}>
+              <SquarePen size={16} />
+            </Button>
           )}
           <Button
             onClick={handleToggle}
