@@ -14,10 +14,10 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO make sure the edit and save buttons are properly clickable when clicking on the button borders
 // TODO color the edit button yellow/orange
 // TODO color the save button green
 // TODO color the delete button red
+// TODO style the input edit field
 // TODO make sure to justify buttons to the right when title is long
 // TODO implement "Clear Completed" button to delete all completed todos
 
@@ -100,6 +100,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
         )}
       >
         <div className='font-semibold'>
+          {/* Edit input field */}
           {isEditing ? (
             <Input
               ref={inputRef}
@@ -126,9 +127,9 @@ export default function TodoItem({ todo, className, ...props }: Props) {
             title={todo.completed ? 'Mark as Incomplete' : 'Mark as Complete'}
             className={cn(
               !todo.completed &&
-                'border-muted-foreground text-muted-foreground hover:bg-muted-foreground hover:text-background',
+                'border-muted-foreground text-muted-foreground hover:bg-muted-foreground',
               todo.completed &&
-                'border-success-foreground text-success-foreground hover:bg-success-foreground hover:text-background',
+                'border-success-foreground text-success-foreground hover:bg-success-foreground',
             )}
           >
             ✔︎
@@ -140,7 +141,12 @@ export default function TodoItem({ todo, className, ...props }: Props) {
               <Save size={16} />
             </Button>
           ) : (
-            <Button onClick={handleEdit} aria-label='Edit' title='Edit'>
+            <Button
+              onClick={handleEdit}
+              aria-label='Edit'
+              title='Edit'
+              className='border-danger-foreground text-danger-foreground hover:bg-danger-foreground'
+            >
               <SquarePen size={16} />
             </Button>
           )}
