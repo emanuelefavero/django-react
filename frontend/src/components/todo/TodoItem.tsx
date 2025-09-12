@@ -117,15 +117,7 @@ export default function TodoItem({ todo, className, ...props }: Props) {
         </div>
 
         <div className='flex flex-wrap gap-2'>
-          {isEditing ? (
-            <Button onClick={handleSaveEdit} aria-label='Save' title='Save'>
-              <Save size={16} />
-            </Button>
-          ) : (
-            <Button onClick={handleEdit} aria-label='Edit' title='Edit'>
-              <SquarePen size={16} />
-            </Button>
-          )}
+          {/* Toggle */}
           <Button
             onClick={handleToggle}
             aria-label={
@@ -141,6 +133,19 @@ export default function TodoItem({ todo, className, ...props }: Props) {
           >
             ✔︎
           </Button>
+
+          {/* Edit/Save */}
+          {isEditing ? (
+            <Button onClick={handleSaveEdit} aria-label='Save' title='Save'>
+              <Save size={16} />
+            </Button>
+          ) : (
+            <Button onClick={handleEdit} aria-label='Edit' title='Edit'>
+              <SquarePen size={16} />
+            </Button>
+          )}
+
+          {/* Delete */}
           <Button onClick={handleDelete} aria-label='Delete' title='Delete'>
             <Trash2 size={16} />
           </Button>
