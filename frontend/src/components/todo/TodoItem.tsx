@@ -14,8 +14,7 @@ type Props = React.ComponentPropsWithRef<'li'> & {
   todo: Todo
 }
 
-// TODO color the delete button red
-// TODO style the input edit field
+// TODO style the input edit field (try to remove border and padding, show just the text with the same size as the not edited title)
 // TODO make sure to justify buttons to the right when title is long
 // TODO implement "Clear Completed" button to delete all completed todos
 
