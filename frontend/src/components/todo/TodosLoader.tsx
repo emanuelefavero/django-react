@@ -1,8 +1,12 @@
 import { todoApiUrl } from '@/config/baseUrl'
+import { TODOS_TAG } from '@/config/cacheTags'
 import TodoList from './TodoList'
 
 async function fetchTodos() {
-  const response = await fetch(todoApiUrl)
+  const response = await fetch(todoApiUrl, {
+    cache: 'force-cache',
+    next: { tags: [TODOS_TAG] },
+  })
   if (!response.ok) throw new Error('Failed to fetch todos')
 
   return response.json()

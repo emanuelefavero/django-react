@@ -1,7 +1,8 @@
 'use server'
 
 import { todoApiUrl } from '@/config/baseUrl'
-import { revalidatePath } from 'next/cache'
+import { TODOS_TAG } from '@/config/cacheTags'
+import { revalidateTag } from 'next/cache'
 
 // * Add todo
 export async function addTodo(formData: FormData) {
@@ -20,7 +21,7 @@ export async function addTodo(formData: FormData) {
 
     if (!response.ok) return { error: 'Failed to add todo' }
 
-    revalidatePath('/')
+    revalidateTag(TODOS_TAG)
 
     return response.json()
   } catch (err) {
@@ -41,7 +42,7 @@ export async function toggleTodo(id: number, completed: boolean) {
 
     if (!response.ok) return { error: 'Failed to toggle todo' }
 
-    revalidatePath('/')
+    revalidateTag(TODOS_TAG)
 
     return response.json()
   } catch (err) {
@@ -58,7 +59,7 @@ export async function deleteTodo(id: number) {
 
     if (!response.ok) return { error: 'Failed to delete todo' }
 
-    revalidatePath('/')
+    revalidateTag(TODOS_TAG)
 
     if (response.status === 204) return null
     return response.json()
@@ -80,7 +81,7 @@ export async function updateTodo(id: number, title: string) {
 
     if (!response.ok) return { error: 'Failed to update todo' }
 
-    revalidatePath('/')
+    revalidateTag(TODOS_TAG)
 
     return response.json()
   } catch (err) {
